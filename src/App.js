@@ -1,24 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Post from "./Post";
-
+import { db } from "./firebase";
 function App() {
-  const [posts] = useState([
-    {
-      username: "dipesh",
-      caption:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, eos?",
-      imageUrl:
-        "https://images.pexels.com/photos/825947/pexels-photo-825947.jpeg?cs=srgb&dl=closeup-photo-of-short-coated-white-and-gray-dog-825947.jpg&fm=jpg",
-    },
-    {
-      username: "jhon",
-      caption:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, eos?",
-      imageUrl:
-        "https://images.pexels.com/photos/2947337/pexels-photo-2947337.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-    },
-  ]);
+  const [posts, setPosts] = useState([]);
+  // useEffect runs based on the specific conditions.
+  useEffect(() => {
+    db.collection("post").onSnapshot((snapshot) => {
+      // every time code changes
+      setPosts(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          post: doc.data(),
+        }))
+      );
+    });
+  }, []);
+
   return (
     <div className="App">
       <div className="app__header">
@@ -29,8 +27,9 @@ function App() {
         />
       </div>
 
-      {posts.map((post) => (
+      {posts.map(({ id, post }) => (
         <Post
+          key={id}
           username={post.username}
           imageUrl={post.imageUrl}
           caption={post.caption}
