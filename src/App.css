@@ -45,3 +45,8 @@
 .post__title strong {
   margin-right: 10px;
 }
+.app__signup {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
