@@ -5,7 +5,7 @@ function Post({ key, username, imageUrl, caption }) {
   return (
     <div className="post">
       <div className="post__header">
-        <Avatar className="post__avatar" alt="Remy Sharp" src={imageUrl} />
+        <Avatar className="post__avatar" alt={username} src={username} />
         <h3>{username}</h3>
       </div>
 

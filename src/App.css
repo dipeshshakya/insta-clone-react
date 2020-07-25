@@ -10,6 +10,11 @@
   background-color: white;
   padding: 20px;
   border-bottom: 1px solid lightgray;
+  display: flex;
+  justify-content: space-around;
+}
+.app__headerImage {
+  object-fit: contain;
 }
 
 /* post style */
@@ -49,4 +54,23 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+.imageUpload {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto;
+  width: 49%;
+  background-color: #ffffff;
+}
+.imageUpload__progress {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.imageUpload input {
+  margin: 10px 0;
+}
+.app__avatar {
+  display: inline-flex;
 }
