@@ -45,6 +45,7 @@ function App() {
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
   const [openSignIn, setOpenSignIn] = useState(false);
+
   useEffect(() => {
     const unsubcribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
@@ -81,6 +82,7 @@ function App() {
       );
     });
   }, []);
+
   const signup = (event) => {
     event.preventDefault();
     auth
@@ -175,6 +177,8 @@ function App() {
       {posts.map(({ id, post }) => (
         <Post
           key={id}
+          postId={id}
+          user={user}
           username={post.username}
           imageUrl={post.imageUrl}
           caption={post.caption}

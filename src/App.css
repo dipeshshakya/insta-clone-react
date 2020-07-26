@@ -6,6 +6,9 @@
   height: 100%;
 }
 .app__header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   object-fit: contain;
   background-color: white;
   padding: 20px;
@@ -73,4 +76,20 @@
 }
 .app__avatar {
   display: inline-flex;
+}
+.post__commentBox {
+  display: flex;
+  margin-top: 10px;
+}
+.post__input {
+  flex: 1;
+}
+.post__button {
+  flex: 0;
+}
+.post__comments {
+  padding: 20px;
+}
+.post__comments strong {
+  margin-right: 10px;
 }
